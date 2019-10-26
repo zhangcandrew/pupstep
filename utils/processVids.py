@@ -11,4 +11,3 @@ def processVids():
     return vidsAsArray
 
 print(processVids())
-
