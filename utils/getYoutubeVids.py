@@ -2,9 +2,7 @@ import requests
 import json
 from pytube import YouTube
 import os
-
-DOWNLOAD_PATH = '/home/andy/GitProjects/pupstep/dogsounds/'
-API_KEY = str(open("API_KEY.txt", "r").read())
+from defaults import API_KEY, DOWNLOAD_PATH
 
 
 def getVids():
