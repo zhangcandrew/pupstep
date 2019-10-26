@@ -4,10 +4,12 @@ from pytube import YouTube
 import os
 
 DOWNLOAD_PATH = '/home/andy/GitProjects/pupstep/dogsounds/'
+API_KEY = str(open("API_KEY.txt", "r").read())
+
 
 def getVids():
     params = {
-            'key': 'AIzaSyBaAZ9j2f6n1qv-RMoB-jEOAeRsqv5Ycjw', 
+            'key': API_KEY.strip(), 
             'part': 'snippet',
             'q': 'dog+barking+compilation',
             }
