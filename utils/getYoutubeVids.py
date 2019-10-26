@@ -22,7 +22,7 @@ def downloadVids(vidlist):
     requestUrl = 'https://youtu.be/'
     
     if not os.path.exists(DOWNLOAD_PATH):
-        os.mkdir(DOWNLOAD_PATH)
+        os.makedirs(DOWNLOAD_PATH)
 
     for vidID in vidlist:
         YouTube(requestUrl+vidID).streams.filter(progressive=True, file_extension='mp4').first().download(output_path=DOWNLOAD_PATH)
@@ -31,7 +31,7 @@ def downloadVids(vidlist):
 
 VideoIDList = getVids()
 downloadVids(VideoIDList)
-VIDEO_FILE_PATHS = [[os.path.join(root, name) for name in files] for root, _, files in os.walk(DOWNLOAD_PATH)]
+
 
 print('Finished downloading 5 vids at path ', DOWNLOAD_PATH)
 
