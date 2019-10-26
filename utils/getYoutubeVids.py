@@ -1,6 +1,9 @@
 import requests
 import json
 from pytube import YouTube
+import os
+
+DOWNLOAD_PATH = '/home/andy/GitProjects/pupstep/dogsounds/'
 
 def getVids():
     params = {
@@ -18,12 +21,19 @@ def getVids():
 def downloadVids(vidlist):
     requestUrl = 'https://youtu.be/'
     for vidID in vidlist:
-        YouTube(requestUrl+vidID).streams.filter(progressive=True, file_extension='mp4').first().download(output_path='/home/andy/GitProjects/pupstep/dogsounds/')
-    
-
-def chopUpVids(download_path):
-    print('blank')
+        YouTube(requestUrl+vidID).streams.filter(progressive=True, file_extension='mp4').first().download(output_path=DOWNLOAD_PATH)
+        print('Successfully downloaded vid') 
 
 
-downloadVids(getVids())
+def chopUpVids(mp4Filepaths):
+    for vidFilepath in mp4Filepaths:
+        print('process func here')
+
+
+
+VideoIDList = getVids()
+# downloadVids(VideoIDList)
+vidFilePaths = [[os.path.join(root, name) for name in files] for root, _, files in os.walk(DOWNLOAD_PATH)]
+print(vidFilePaths[0])
+
 
